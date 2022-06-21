@@ -1,0 +1,18 @@
+- hosts: localhost
+
+  pre_tasks:
+    - name: Update Brew
+      community.general.homebrew:
+        update_homebrew: yes
+      tags:
+        - install
+        - core
+  tasks:
+    - include: ansible/tasks/git-setup.yaml
+    - include: ansible/tasks/cli-tools.yaml
+    - include: ansible/tasks/gui-tools.yaml
+    - include: ansible/tasks/zsh.yaml
+    - include: ansible/tasks/app-store-apps.yaml
+    - include: ansible/tasks/fonts.yaml
+    - include: ansible/tasks/osx.yaml
+    - include: ansible/tasks/node.yaml

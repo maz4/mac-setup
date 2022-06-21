@@ -1,0 +1,34 @@
+- name: Install core packages via brew casks
+  community.general.homebrew_cask:
+    name: "{{ item }}"
+    state: latest
+  ignore_errors: yes
+  with_items:
+    - brave-browser
+    - google-chrome
+    - google-drive
+    - firefox
+    - docker
+    - iterm2
+    - insomnia
+    - postman
+    - ngrok
+    - zoom
+    - microsoft-teams
+    - visual-studio-code
+    - vlc
+    - fantastical
+    - spotify
+    - surfshark
+    - openvpn
+    - sourcetree
+    - stats
+    - aldente
+    - warp
+    - cheatsheet
+    - anki
+    - vmware-horizon-client
+  tags:
+    - install
+    - gui
+    - productivity

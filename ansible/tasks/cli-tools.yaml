@@ -1,0 +1,18 @@
+- name: Install useful cli packages
+  community.general.homebrew:
+    name: "{{ item }}"
+    state: latest
+  with_items:
+    - yarn
+    - tree
+    - curl
+    - htop
+    - ansible-lint
+    - ranger
+    - spotify-tui
+    - lazydocker
+    - skaffold
+  tags:
+    - install
+    - productivity
+    - cli
