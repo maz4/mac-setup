@@ -15,4 +15,5 @@
     - include: ansible/tasks/app-store-apps.yaml
     - include: ansible/tasks/fonts.yaml
     - include: ansible/tasks/osx.yaml
+    - include: ansible/tasks/iterm.yaml
     - include: ansible/tasks/node.yaml

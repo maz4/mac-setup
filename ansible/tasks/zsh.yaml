@@ -31,3 +31,24 @@
     - zsh
     - productivity
   when: not oh_my_zsh.stat.exists
+
+# Will need to copy it manually ansible doesn't like the file syntax
+# - name: Copy cobalt2 theme to zsh theme directory
+#   template:
+#     src: ../templates/cobalt2.zsh-theme
+#     dest: ~/.oh-my-zsh/themes/
+#     mode: "0644"
+#   tags:
+#     - install
+#     - iterm
+#     - productivity
+
+- name: Copy ZSH .zshrc file
+  template:
+    src: ../templates/.zshrc
+    dest: ~/
+    mode: "0644"
+  tags:
+    - install
+    - iterm
+    - productivity

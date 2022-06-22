@@ -8,6 +8,7 @@
 - name: Installing fonts
   homebrew_cask:
     name:
+      - font-inconsolata-for-powerline
       - font-hack-nerd-font
       - font-fira-code
       - font-meslo-lg-nerd-font
