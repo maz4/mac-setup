@@ -2,6 +2,8 @@
 
 This repo will automatically setups a mac with the applications which i use on a daily basis.
 
+Make sure you are logged in to apple App Store. Mas-cli tool needs user authentication from the app store to install app store apps.
+
 To run use `./install.sh`
 
 ## iTerm2 ZSH setup

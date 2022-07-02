@@ -12,6 +12,7 @@
     - spotify-tui
     - lazydocker
     - skaffold
+    - mas
   tags:
     - install
     - productivity
