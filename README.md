@@ -151,3 +151,7 @@ code --install-extension VisualStudioExptTeam.vscodeintellicode
 code --install-extension WallabyJs.quokka-vscode
 code --install-extension Zignd.html-css-class-completion
 ```
+
+## Apps to install manually
+
+- OpenVPN
