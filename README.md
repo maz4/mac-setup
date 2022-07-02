@@ -14,7 +14,7 @@ Copy manually `templates/cobalt2.zsh-theme` to `~/.oh-my-zsh/themes/`
 
 ## Git manual setup
 
-- git log styling
+### Git Log styling
 
 ```
 git config --global pretty.my format:'%C(yellow)%h %C(dim green)%ad %C(reset)| %C(cyan)%s%d %C(#667788)[%an]' --date=format:'%F %R'
@@ -25,12 +25,18 @@ git config --global format.pretty my
 git config --global log.date format-local:'%F %R’
 ```
 
-- manage multiple git accounts
+### Create ssh keys
+
+Run command: `ssh-keygen -t rsa -b 4096 -C "your_email@example.com"`. During the process you will be asked about location whereto store keys put in location `/Users/{user}/.ssh/id_rsa_github` for github and `/Users/{user}/.ssh/id_rsa_gitlab` for gitlab
+
+[atlassian generate ssh keys](https://www.atlassian.com/git/tutorials/git-ssh)
+
+### Manage multiple git accounts
 
 ```
-// location -> ~/Users/{username}/.ssh/.ssh
-
-#SSH config for multiple git hosting accounts
+// location -> ~/Users/{username}/.ssh/
+# File name `config`
+# SSH config for multiple git hosting accounts
 
 # Personal github account
 Host github.com
@@ -45,13 +51,18 @@ Host gitlab.com
  IdentityFile ~/.ssh/id_rsa_gitlab
 ```
 
-required files
+The bellow files should be generated:
 
-- ~/Users/{user}/.ssh/id_rsa_github - rsa private key
-- ~/Users/{user}/.ssh/id_rsa_github.pub - ssh-rsa
+```
+~/Users/{user}/.ssh/id_rsa_github - rsa private key
+~/Users/{user}/.ssh/id_rsa_github.pub - ssh-rsa
+~/Users/{user}/.ssh/id_rsa_gitlab - rsa private key
+~/Users/{user}/.ssh/id_rsa_gitlab.pub - ssh-rsa
+```
 
-- ~/Users/{user}/.ssh/id_rsa_gitlab - rsa private key
-- ~/Users/{user}/.ssh/id_rsa_gitlab.pub - ssh-rsa
+Run command ssh-add `~/.ssh/id_rsa_github` and `~/.ssh/id_rsa_gitlab` to add new keys.
+
+[stack overflow post](https://stackoverflow.com/questions/3225862/multiple-github-accounts-ssh-config)
 
 ## VS code setup
 
@@ -84,7 +95,7 @@ Open Settings (JSON) -> Command + Shift + P -> type Open Settings (JSON) -> past
  "[javascriptreact]": {
    "editor.defaultFormatter": "esbenp.prettier-vscode"
  },
- "editor.fontFamily": "Menlo, Monaco, 'Courier New', monospace, Droid Sans Mono Dotted for Powerline",
+ "editor.fontFamily": "Menlo, Monaco, 'Courier New', monospace, Droid Sans Mono Dotted for Powerline, Inconsolata for Powerline",
  "[json]": {
    "editor.defaultFormatter": "esbenp.prettier-vscode"
  },
@@ -119,7 +130,6 @@ Open Settings (JSON) -> Command + Shift + P -> type Open Settings (JSON) -> past
  "editor.formatOnSave": true,
  "explorer.confirmDelete": false
 }
-
 ```
 
 ### VS code extensions
