@@ -128,7 +128,9 @@ Open Settings (JSON) -> Command + Shift + P -> type Open Settings (JSON) -> past
  "vscode-edge-devtools.mirrorEdits": true,
  "editor.defaultFormatter": "esbenp.prettier-vscode",
  "editor.formatOnSave": true,
- "explorer.confirmDelete": false
+ "explorer.confirmDelete": false,
+  "workbench.editor.limit.enabled": true,
+  "workbench.editor.limit.value": 1
 }
 ```
 
@@ -160,6 +162,7 @@ code --install-extension svelte.svelte-vscode
 code --install-extension VisualStudioExptTeam.vscodeintellicode
 code --install-extension WallabyJs.quokka-vscode
 code --install-extension Zignd.html-css-class-completion
+code --install-extension vscode-icons-team.vscode-icons
 ```
 
 ## Apps to install manually
