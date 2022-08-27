@@ -6,14 +6,6 @@
     id: 441258766
     state: latest
 
-- name: Install Bear
-  ignore_errors: yes
-  tags:
-    - app-store
-  community.general.mas:
-    id: 1091189122
-    state: latest
-
 - name: Install Elmedia Player
   ignore_errors: yes
   tags:
