@@ -1,9 +1,6 @@
 - name: Tapping homebrew/cask-fonts
   homebrew_tap:
     name: homebrew/cask-fonts
-  tags:
-    - install
-    - fonts
 
 - name: Installing fonts
   homebrew_cask:
@@ -13,6 +10,3 @@
       - font-fira-code
       - font-meslo-lg-nerd-font
       - font-meslo-for-powerline
-  tags:
-    - install
-    - fonts

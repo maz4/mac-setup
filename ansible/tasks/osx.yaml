@@ -34,15 +34,9 @@
 
     # Disable ext change warning
     - defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
-  tags:
-    - install
-    - osx
 
 - name: Configure terminal to open in same directory by default
   shell: defaults write com.apple.Terminal NewTabWorkingDirectoryBehavior -bool true
-  tags:
-    - install
-    - osx
 
 - name: Show hidden files in finder
   osx_defaults:
@@ -51,9 +45,6 @@
     type: bool
     value: true
     state: present
-  tags:
-    - install
-    - osx
 
 # - name: map Esc(ape) to Caps Lock
 #   command: hidutil property --set '{"UserKeyMapping":[{"HIDKeyboardModifierMappingSrc":0x700000039,"HIDKeyboardModifierMappingDst":0x700000029}]}'
@@ -64,13 +55,7 @@
     type: int
     value: 1
   become: yes
-  tags:
-    - install
-    - osx
 
 - name: Restart finder
   changed_when: true
   command: killall Finder
-  tags:
-    - install
-    - osx

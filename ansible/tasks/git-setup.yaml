@@ -2,45 +2,33 @@
   community.general.homebrew:
     name: git
     state: latest
-  tags:
-    - git-personal
 
 - name: Git personal setup email
   git_config:
     name: user.email
     scope: global
     value: "zasadzkimarcin@gmail.com"
-  tags:
-    - git-personal
 
 - name: Git personal setup name
   git_config:
     name: user.name
     scope: global
     value: "Marcin Zasadzki"
-  tags:
-    - git-personal
 
 - name: Set vim as default git editor
   community.general.git_config:
     name: core.editor
     scope: global
     value: vim
-  tags:
-    - git-personal
 
 - name: Set global git ignore
   community.general.git_config:
     name: core.excludesfile
     scope: global
     value: ~/.global_gitignore
-  tags:
-    - git-personal
 
 - name: Set global git default branch name
   community.general.git_config:
     name: init.defaultBranch
     scope: global
     value: main
-  tags:
-    - git-personal

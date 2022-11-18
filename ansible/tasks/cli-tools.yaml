@@ -13,7 +13,3 @@
     - lazydocker
     - skaffold
     - mas
-  tags:
-    - install
-    - productivity
-    - cli

@@ -13,11 +13,8 @@
     - insomnia
     - postman
     - ngrok
-    - zoom
-    - microsoft-teams
     - visual-studio-code
     - vlc
-    - fantastical
     - spotify
     - surfshark
     - sourcetree
@@ -27,7 +24,4 @@
     - cheatsheet
     - anki
     - http-toolkit
-  tags:
-    - install
-    - gui
-    - productivity
+    - skype
