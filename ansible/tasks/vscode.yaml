@@ -1,6 +1,6 @@
 - name: Create a default VSCode configuration
   template:
-    src: ../templates/vscode-settings.json.j2
+    src: ../templates/vscode-settings.json
     dest: /Users/{{ lookup('env', 'USER') }}/Library/Application Support/Code/User/settings.json
     mode: "0644"
     force: yes
@@ -18,19 +18,13 @@
     - formulahendry.auto-rename-tag
     - frhtylcn.aws-sdk-snippets
     - johnpapa.vscode-peacock
-    - jpoissonnier.vscode-styled-components
     - lucax88x.codeacejumper
     - mgmcdermott.vscode-language-babel
-    - msjsdiag.debugger-for-edge
     - naumovs.color-highlight
     - pflannery.vscode-versionlens
-    - robinbentley.sass-indented
     - streetsidesoftware.code-spell-checker
     - svelte.svelte-vscode
     - VisualStudioExptTeam.vscodeintellicode
     - WallabyJs.quokka-vscode
     - Zignd.html-css-class-completion
     - vscode-icons-team.vscode-icons
-
-- name: Launch VsCode from the command line
-  shell: cat << EOF >> ~/.zprofile export PATH="\$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin" EOF
