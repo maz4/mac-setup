@@ -1,63 +1,47 @@
 - name: Install Magnet
   ignore_errors: yes
-  tags:
-    - app-store
   community.general.mas:
     id: 441258766
     state: latest
 
 - name: Install Elmedia Player
   ignore_errors: yes
-  tags:
-    - app-store
   community.general.mas:
     id: 1044549675
     state: latest
 
 - name: Install LINE
   ignore_errors: yes
-  tags:
-    - app-store
   community.general.mas:
     id: 539883307
     state: latest
 
 - name: Install Telegram Lite
   ignore_errors: yes
-  tags:
-    - app-store
   community.general.mas:
     id: 946399090
     state: latest
 
 - name: Install The Unarchiver
   ignore_errors: yes
-  tags:
-    - app-store
   community.general.mas:
     id: 425424353
     state: latest
 
 - name: Install Be Focused Pro
   ignore_errors: yes
-  tags:
-    - app-store
   community.general.mas:
     id: 961632517
     state: latest
 
 - name: Install Amphetamine
   ignore_errors: yes
-  tags:
-    - app-store
   community.general.mas:
     id: 937984704
     state: latest
 
 - name: Install Slack
   ignore_errors: yes
-  tags:
-    - app-store
   community.general.mas:
     id: 803453959
     state: latest

@@ -1,0 +1,50 @@
+{
+ "workbench.iconTheme": "vscode-icons",
+ "workbench.colorCustomizations": {
+   "statusBar.background": "#333333",
+   "statusBarItem.remoteBackground": "#333333"
+ },
+ "editor.minimap.enabled": false,
+ "[javascript]": {
+   "editor.defaultFormatter": "esbenp.prettier-vscode"
+ },
+ "[javascriptreact]": {
+   "editor.defaultFormatter": "esbenp.prettier-vscode"
+ },
+ "editor.fontFamily": "Menlo, Monaco, 'Courier New', monospace, Droid Sans Mono Dotted for Powerline, Inconsolata for Powerline",
+ "[json]": {
+   "editor.defaultFormatter": "esbenp.prettier-vscode"
+ },
+ "javascript.updateImportsOnFileMove.enabled": "always",
+ "editor.suggestSelection": "first",
+ "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+ "cSpell.userWords": [],
+ "[typescript]": {
+   "editor.defaultFormatter": "esbenp.prettier-vscode"
+ },
+ "editor.tabSize": 2,
+ "[jsonc]": {
+   "editor.defaultFormatter": "esbenp.prettier-vscode"
+ },
+ "[typescriptreact]": {
+   "editor.defaultFormatter": "esbenp.prettier-vscode"
+ },
+ "workbench.startupEditor": "newUntitledFile",
+ "[css]": {
+   "editor.defaultFormatter": "esbenp.prettier-vscode"
+ },
+ "liveshare.authenticationProvider": "GitHub",
+ "[html]": {
+   "editor.defaultFormatter": "esbenp.prettier-vscode"
+ },
+ "svelte.enable-ts-plugin": true,
+ "[svelte]": {
+   "editor.defaultFormatter": "svelte.svelte-vscode"
+ },
+ "vscode-edge-devtools.mirrorEdits": true,
+ "editor.defaultFormatter": "esbenp.prettier-vscode",
+ "editor.formatOnSave": true,
+ "explorer.confirmDelete": false,
+  "workbench.editor.limit.enabled": true,
+  "workbench.editor.limit.value": 1
+}

@@ -3,6 +3,7 @@
   with_items:
     # Show Path bar in Finder
     - defaults write com.apple.finder ShowPathbar -bool true
+
     # Show Status bar in Finder
     - defaults write com.apple.finder ShowStatusBar -bool true
 
@@ -20,7 +21,7 @@
 
     # Set default Finder location to home folder (~/)
     - defaults write com.apple.finder NewWindowTarget -string "PfLo"
-    - defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}"
+    - defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}/Downloads"
 
     # Use list view in all Finder windows by default
     # Four-letter codes for the other view modes: `icnv`, `clmv`, `Flwv`
@@ -34,15 +35,74 @@
 
     # Disable ext change warning
     - defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
-  tags:
-    - install
-    - osx
+
+    # Enable snap-to-grid for icons on the desktop and in other icon views
+    - /usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist
+    - /usr/libexec/PlistBuddy -c "Set :FK_StandardViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist
+    - /usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist
+
+    # Finder keep folders on top
+    - defaults write com.apple.finder "_FXSortFoldersFirst" -bool "true" && killall Finder
+
+    # Dock
+    # Show recent applications in Dock
+    - defaults write com.apple.dock show-recents -bool false
+
+    # Automatically hide and show the Dock:
+    - defaults write com.apple.dock autohide -bool true
+
+    # Remove the auto-hiding Dock delay
+    # - defaults write com.apple.dock autohide-delay -float 0
+
+    # Don’t automatically rearrange Spaces based on most recent use
+    - defaults write com.apple.dock mru-spaces -bool false
+
+    # Wipe all (default) app icons from the Dock
+    # This is only really useful when setting up a new Mac, or if you don’t use
+    # the Dock to launch apps.
+    - defaults write com.apple.dock persistent-apps -array
+
+    # Set default apps in dock
+    # Launchpad
+    - defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/System/Applications/Launchpad.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
+    # VS Code
+    - defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Visual Studio Code.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
+    # Safari
+    - defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Safari.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
+    # Firefox
+    - defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Firefox.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
+    # Chrome
+    - defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Google Chrome.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
+    # Brave Browser
+    - defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Brave Browser.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
+    # iTerm
+    - defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/iTerm.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
+    # Slack
+    - defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Slack.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
+    # Messages
+    - defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/System/Applications/Messages.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
+    # Mail
+    - defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/System/Applications/Mail.app/</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
+    # Calendar
+    - defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/System/Applications/Calendar.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
+    # System Preferences
+    - defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/System/Applications/System Preferences.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
+    # Anki
+    - defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Anki.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
+    # DeepL
+    # - defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/DeepL.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
+    # Insomnia
+    # - defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Insomnia.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
+    # Postman
+    # - defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Postman.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
+    # MongoDB Compass
+    # - defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/MongoDB Compass.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
+
+    # Dock icon size
+    - defaults write com.apple.dock tilesize -int "48" && killall Dock
 
 - name: Configure terminal to open in same directory by default
   shell: defaults write com.apple.Terminal NewTabWorkingDirectoryBehavior -bool true
-  tags:
-    - install
-    - osx
 
 - name: Show hidden files in finder
   osx_defaults:
@@ -51,9 +111,6 @@
     type: bool
     value: true
     state: present
-  tags:
-    - install
-    - osx
 
 # - name: map Esc(ape) to Caps Lock
 #   command: hidutil property --set '{"UserKeyMapping":[{"HIDKeyboardModifierMappingSrc":0x700000039,"HIDKeyboardModifierMappingDst":0x700000029}]}'
@@ -64,13 +121,7 @@
     type: int
     value: 1
   become: yes
-  tags:
-    - install
-    - osx
 
 - name: Restart finder
   changed_when: true
   command: killall Finder
-  tags:
-    - install
-    - osx

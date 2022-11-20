@@ -10,11 +10,11 @@ To run use `./install.sh`
 
 Settings file
 
-Copy manually `templates/cobalt2.zsh-theme` to `~/.oh-my-zsh/themes/`
-
 ## Git manual setup
 
 ### Git Log styling
+
+Now done via install.sh script but i'll keep it for reference
 
 ```
 git config --global pretty.my format:'%C(yellow)%h %C(dim green)%ad %C(reset)| %C(cyan)%s%d %C(#667788)[%an]' --date=format:'%F %R'
@@ -77,94 +77,32 @@ export PATH="\$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/
 EOF
 ```
 
-### VS code settings
+## ZSH custom functions for quicker git branch management
 
-Open Settings (JSON) -> Command + Shift + P -> type Open Settings (JSON) -> paste in bellow json
+Add at the end of your `~/.zshrc` file
 
 ```
-{
- "workbench.iconTheme": "vscode-icons",
- "workbench.colorCustomizations": {
-   "statusBar.background": "#333333",
-   "statusBarItem.remoteBackground": "#333333"
- },
- "editor.minimap.enabled": false,
- "[javascript]": {
-   "editor.defaultFormatter": "esbenp.prettier-vscode"
- },
- "[javascriptreact]": {
-   "editor.defaultFormatter": "esbenp.prettier-vscode"
- },
- "editor.fontFamily": "Menlo, Monaco, 'Courier New', monospace, Droid Sans Mono Dotted for Powerline, Inconsolata for Powerline",
- "[json]": {
-   "editor.defaultFormatter": "esbenp.prettier-vscode"
- },
- "javascript.updateImportsOnFileMove.enabled": "always",
- "editor.suggestSelection": "first",
- "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
- "cSpell.userWords": [],
- "[typescript]": {
-   "editor.defaultFormatter": "esbenp.prettier-vscode"
- },
- "editor.tabSize": 2,
- "[jsonc]": {
-   "editor.defaultFormatter": "esbenp.prettier-vscode"
- },
- "[typescriptreact]": {
-   "editor.defaultFormatter": "esbenp.prettier-vscode"
- },
- "workbench.startupEditor": "newUntitledFile",
- "[css]": {
-   "editor.defaultFormatter": "esbenp.prettier-vscode"
- },
- "liveshare.authenticationProvider": "GitHub",
- "[html]": {
-   "editor.defaultFormatter": "esbenp.prettier-vscode"
- },
- "svelte.enable-ts-plugin": true,
- "[svelte]": {
-   "editor.defaultFormatter": "svelte.svelte-vscode"
- },
- "vscode-edge-devtools.mirrorEdits": true,
- "editor.defaultFormatter": "esbenp.prettier-vscode",
- "editor.formatOnSave": true,
- "explorer.confirmDelete": false,
-  "workbench.editor.limit.enabled": true,
-  "workbench.editor.limit.value": 1
+# custom functions
+cyan=`tput setaf 6`
+yellow=`tput setaf 3`
+green=`tput setaf 2`
+bold=`tput bold`
+reset=`tput sgr0`
+
+# show all branches === git branch
+b() {
+  (git for-each-ref --sort=-committerdate refs/heads/ --format=${green}'%(authordate:short) '${reset}${bold}${cyan}'%(objectname:short)'${reset}${yellow}' %(refname:short)'${reset}' ('${green}'%(committerdate:relative)'${reset}')' $@ | nl)
+}
+
+# delete branch from the list displayed by `b` command example -> `bd 1`
+
+bd() {
+  git branch -D `git for-each-ref --sort=-committerdate refs/heads/ --format='%(refname:short)' | sed -n ${1}p`
+}
+
+# checkout branch with branch displayed by the `b` command example `bc 1`
+
+bc() {
+  git checkout `git for-each-ref --sort=-committerdate refs/heads/ --format='%(refname:short)' | sed -n ${1}p`
 }
 ```
-
-### VS code extensions
-
-ToDo
-
-automate installation with ansible
-
-```
-code --install-extension aaravb.chrome-extension-developer-tools
-code --install-extension adamhartford.vscode-base64
-code --install-extension dbaeumer.vscode-eslint
-code --install-extension eamodio.gitlens
-code --install-extension ecmel.vscode-html-css
-code --install-extension esbenp.prettier-vscode
-code --install-extension formulahendry.auto-rename-tag
-code --install-extension frhtylcn.aws-sdk-snippets
-code --install-extension johnpapa.vscode-peacock
-code --install-extension jpoissonnier.vscode-styled-components
-code --install-extension lucax88x.codeacejumper
-code --install-extension mgmcdermott.vscode-language-babel
-code --install-extension msjsdiag.debugger-for-edge
-code --install-extension naumovs.color-highlight
-code --install-extension pflannery.vscode-versionlens
-code --install-extension robinbentley.sass-indented
-code --install-extension streetsidesoftware.code-spell-checker
-code --install-extension svelte.svelte-vscode
-code --install-extension VisualStudioExptTeam.vscodeintellicode
-code --install-extension WallabyJs.quokka-vscode
-code --install-extension Zignd.html-css-class-completion
-code --install-extension vscode-icons-team.vscode-icons
-```
-
-## Apps to install manually
-
-- OpenVPN

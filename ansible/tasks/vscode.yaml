@@ -1,0 +1,36 @@
+- name: Create a default VSCode configuration
+  template:
+    src: ../templates/vscode-settings.json.j2
+    dest: /Users/{{ lookup('env', 'USER') }}/Library/Application Support/Code/User/settings.json
+    mode: "0644"
+    force: yes
+
+# Add something which ensures path is set here
+- name: Install VSCode extensions
+  shell: code --install-extension {{ item }}
+  with_items:
+    - aaravb.chrome-extension-developer-tools
+    - adamhartford.vscode-base64
+    - dbaeumer.vscode-eslint
+    - eamodio.gitlens
+    - ecmel.vscode-html-css
+    - esbenp.prettier-vscode
+    - formulahendry.auto-rename-tag
+    - frhtylcn.aws-sdk-snippets
+    - johnpapa.vscode-peacock
+    - jpoissonnier.vscode-styled-components
+    - lucax88x.codeacejumper
+    - mgmcdermott.vscode-language-babel
+    - msjsdiag.debugger-for-edge
+    - naumovs.color-highlight
+    - pflannery.vscode-versionlens
+    - robinbentley.sass-indented
+    - streetsidesoftware.code-spell-checker
+    - svelte.svelte-vscode
+    - VisualStudioExptTeam.vscodeintellicode
+    - WallabyJs.quokka-vscode
+    - Zignd.html-css-class-completion
+    - vscode-icons-team.vscode-icons
+
+- name: Launch VsCode from the command line
+  shell: cat << EOF >> ~/.zprofile export PATH="\$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin" EOF
