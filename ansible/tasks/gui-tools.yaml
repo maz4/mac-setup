@@ -4,24 +4,26 @@
     state: latest
   ignore_errors: yes
   with_items:
+    - anki
+    - aldente
     - brave-browser
+    - cheatsheet
+    - docker
+    - deepl
     - google-chrome
     - google-drive
+    - http-toolkit
     - firefox
-    - docker
     - iterm2
     - insomnia
-    - postman
+    - mongodb-compass
     - ngrok
-    - visual-studio-code
-    - vlc
+    - postman
+    - stats
     - spotify
     - surfshark
     - sourcetree
-    - stats
-    - aldente
-    - warp
-    - cheatsheet
-    - anki
-    - http-toolkit
     - skype
+    - visual-studio-code
+    - vlc
+    - warp
