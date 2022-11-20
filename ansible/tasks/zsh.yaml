@@ -2,10 +2,10 @@
   community.general.homebrew:
     name: ["zsh"]
 
-# - name: Change shell to zsh
-#   shell: chsh -s $(which zsh)
-#   changed_when: true
-#   become: true
+- name: Change shell to zsh
+  shell: chsh -s $(which zsh)
+  changed_when: true
+  become: true
 
 - name: Check to see if oh-my-zsh is already installed
   stat:
@@ -16,15 +16,8 @@
   shell: sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
   when: not oh_my_zsh.stat.exists
 
-# Will need to copy it manually ansible doesn't like the file syntax
-# - name: Copy cobalt2 theme to zsh theme directory
-#   template:
-#     src: ../templates/cobalt2.zsh-theme.
-#     dest: ~/.oh-my-zsh/themes/cobalt2.zsh-theme
-#     mode: "0644"
-
 - name: Copy ZSH .zshrc file
   template:
     src: ../templates/.zshrc
-    dest: ~/.zshrc
+    dest: ~/
     mode: "0644"

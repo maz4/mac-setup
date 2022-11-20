@@ -14,7 +14,7 @@ Settings file
 
 ### Git Log styling
 
-Now done visa install.sh script but i'll keep it for reference
+Now done via install.sh script but i'll keep it for reference
 
 ```
 git config --global pretty.my format:'%C(yellow)%h %C(dim green)%ad %C(reset)| %C(cyan)%s%d %C(#667788)[%an]' --date=format:'%F %R'
