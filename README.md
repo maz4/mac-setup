@@ -10,11 +10,11 @@ To run use `./install.sh`
 
 Settings file
 
-Copy manually `templates/cobalt2.zsh-theme` to `~/.oh-my-zsh/themes/`
-
 ## Git manual setup
 
 ### Git Log styling
+
+Now done visa install.sh script but i'll keep it for reference
 
 ```
 git config --global pretty.my format:'%C(yellow)%h %C(dim green)%ad %C(reset)| %C(cyan)%s%d %C(#667788)[%an]' --date=format:'%F %R'
@@ -75,4 +75,34 @@ cat << EOF >> ~/.zprofile
 # Add Visual Studio Code (code)
 export PATH="\$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 EOF
+```
+
+## ZSH custom functions for quicker git branch management
+
+Add at the end of your `~/.zshrc` file
+
+```
+# custom functions
+cyan=`tput setaf 6`
+yellow=`tput setaf 3`
+green=`tput setaf 2`
+bold=`tput bold`
+reset=`tput sgr0`
+
+# show all branches === git branch
+b() {
+  (git for-each-ref --sort=-committerdate refs/heads/ --format=${green}'%(authordate:short) '${reset}${bold}${cyan}'%(objectname:short)'${reset}${yellow}' %(refname:short)'${reset}' ('${green}'%(committerdate:relative)'${reset}')' $@ | nl)
+}
+
+# delete branch from the list displayed by `b` command example -> `bd 1`
+
+bd() {
+  git branch -D `git for-each-ref --sort=-committerdate refs/heads/ --format='%(refname:short)' | sed -n ${1}p`
+}
+
+# checkout branch with branch displayed by the `b` command example `bc 1`
+
+bc() {
+  git checkout `git for-each-ref --sort=-committerdate refs/heads/ --format='%(refname:short)' | sed -n ${1}p`
+}
 ```

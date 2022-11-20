@@ -98,13 +98,6 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-export NVM_DIR=~/.nvm
-source $(brew --prefix nvm)/nvm.sh
-
 # custom functions
 cyan=`tput setaf 6`
 yellow=`tput setaf 3`
@@ -112,14 +105,24 @@ green=`tput setaf 2`
 bold=`tput bold`
 reset=`tput sgr0`
 
+# show all branches === git branch
 b() {
   (git for-each-ref --sort=-committerdate refs/heads/ --format=${green}'%(authordate:short) '${reset}${bold}${cyan}'%(objectname:short)'${reset}${yellow}' %(refname:short)'${reset}' ('${green}'%(committerdate:relative)'${reset}')' $@ | nl)
 }
 
+# delete branch from the list displayed by `b` command example -> `bd 1`
 bd() {
   git branch -D `git for-each-ref --sort=-committerdate refs/heads/ --format='%(refname:short)' | sed -n ${1}p`
 }
 
+# checkout branch with branch displayed by the `b` command example `bc 1`
 bc() {
   git checkout `git for-each-ref --sort=-committerdate refs/heads/ --format='%(refname:short)' | sed -n ${1}p`
 }
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+export NVM_DIR=~/.nvm
+source $(brew --prefix nvm)/nvm.sh

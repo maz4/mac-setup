@@ -90,13 +90,13 @@
     # Anki
     - defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Anki.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
     # DeepL
-    - defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/DeepL.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
+    # - defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/DeepL.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
     # Insomnia
-    - defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Insomnia.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
+    # - defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Insomnia.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
     # Postman
-    - defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Postman.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
+    # - defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Postman.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
     # MongoDB Compass
-    - defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/MongoDB Compass.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
+    # - defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/MongoDB Compass.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
 
     # Dock icon size
     - defaults write com.apple.dock tilesize -int "48" && killall Dock
