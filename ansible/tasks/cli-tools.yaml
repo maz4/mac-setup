@@ -13,3 +13,7 @@
     - lazydocker
     - skaffold
     - mas
+    # history jump
+    - jump
+    # Github Cli
+    - gh
