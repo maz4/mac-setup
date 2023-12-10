@@ -15,11 +15,12 @@ fi
 ansible-galaxy collection install community.general
 ansible-playbook local.yaml -K --ask-vault-pass
 
-# Copy oh-my-zsh theme
+# Copy oh-my-zsh themes
 if command -v zsh &> /dev/null
 then
     echo "Copy oh-my-zsh theme"
     cp ansible/templates/cobalt2.zsh-theme ~/.oh-my-zsh/themes
+    cp ansible/templates/gnzh2.zsh-theme ~/.oh-my-zsh/themes
 fi
 
 # Style git log messages
