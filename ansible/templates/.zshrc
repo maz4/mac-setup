@@ -6,8 +6,7 @@ export ZSH="/Users/marcinzasadzki/.oh-my-zsh"
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 # ZSH_THEME="cobalt2"
-# ZSH_THEME="jonathan"
-ZSH_THEME="gnzh"
+ZSH_THEME="gnzh2"
 
 # Which plugins would you like to load?
 # Add wisely, as too many plugins slow down shell startup.
@@ -114,8 +113,8 @@ function pl() {
 }
 
 # Aliases
-# edit zshrc in a new vs code window
-alias ez="code -n ~/.zshrc"
+# Edit zshrc file in a new vscode window
+alias ez='code --new-window --wait ~/.zshrc && source ~/.zshrc'
 
 # shortern calling yarn
 alias y="yarn"
