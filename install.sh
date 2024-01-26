@@ -23,6 +23,16 @@ then
     cp ansible/templates/gnzh2.zsh-theme ~/.oh-my-zsh/themes
 fi
 
+# Copy Hamerspoon config
+if [ -d "$HOME/.hammerspoon" ];
+then
+    echo "Copy hammerspoon config to ~/.hammerspoon"
+
+    cp ansible/templates/init.lua ~/.hammerspoon/init.lua
+    
+    echo "Hammerspoon config copied successfully"
+fi
+
 # Style git log messages
 if command -v git &> /dev/null
 then

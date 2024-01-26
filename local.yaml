@@ -6,13 +6,32 @@
         update_homebrew: yes
 
   tasks:
-    - include: ansible/tasks/git-setup.yaml
-    - include: ansible/tasks/cli-tools.yaml
-    - include: ansible/tasks/gui-tools.yaml
-    - include: ansible/tasks/zsh.yaml
-    - include: ansible/tasks/app-store-apps.yaml
-    - include: ansible/tasks/fonts.yaml
-    - include: ansible/tasks/iterm.yaml
-    - include: ansible/tasks/node.yaml
-    - include: ansible/tasks/vscode.yaml
-    - include: ansible/tasks/osx.yaml
+    - name: Git setup tasks
+      include_tasks: ansible/tasks/git-setup.yaml
+
+    - name: CLI tools setup tasks
+      include_tasks: ansible/tasks/cli-tools.yaml
+
+    - name: GUI tools setup tasks
+      include_tasks: ansible/tasks/gui-tools.yaml
+
+    - name: Zsh setup tasks
+      include_tasks: ansible/tasks/zsh.yaml
+
+    - name: App Store apps setup tasks
+      include_tasks: ansible/tasks/app-store-apps.yaml
+
+    - name: fonts setup tasks
+      include_tasks: ansible/tasks/fonts.yaml
+
+    - name: iTerm setup tasks
+      include_tasks: ansible/tasks/iterm.yaml
+
+    - name: Node setup tasks
+      include_tasks: ansible/tasks/node.yaml
+
+    - name: VSCode setup tasks
+      include_tasks: ansible/tasks/vscode.yaml
+
+    - name: OSX setup tasks
+      include_tasks: ansible/tasks/osx.yaml
