@@ -1,0 +1,6 @@
+- name: Create a default Zed configuration
+  template:
+    src: ../templates/zed-settings.json
+    dest: /Users/{{ lookup('env', 'USER') }}/.config/zed/settings.json
+    mode: "0644"
+    force: yes

@@ -6,6 +6,7 @@
   with_items:
     - anki
     - aldente
+    - alfred
     - brave-browser
     - cheatsheet
     - docker
@@ -14,6 +15,7 @@
     - google-drive
     - http-toolkit
     - firefox
+    # iterm2 terminal
     - iterm2
     - insomnia
     - mongodb-compass
@@ -26,5 +28,5 @@
     - skype
     - visual-studio-code
     - vlc
-    - warp
     - hammerspoon
+    - zed

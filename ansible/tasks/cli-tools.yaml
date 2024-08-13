@@ -15,5 +15,7 @@
     - mas
     # history jump
     - jump
+    # fuzzy finder
+    - fzf
     # Github Cli
     - gh
