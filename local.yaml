@@ -36,5 +36,8 @@
     - name: Zed setup tasks
       include_tasks: ansible/tasks/zed.yaml
 
+    - name: Nvim / Lvim setup
+      include_tasks: ansible/tasks/nvim.yaml
+      
     - name: OSX setup tasks
       include_tasks: ansible/tasks/osx.yaml
