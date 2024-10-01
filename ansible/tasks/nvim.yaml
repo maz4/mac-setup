@@ -1,0 +1,6 @@
+- name: Create a default Neo Vim / Lunar Vim configuration
+  template:
+    src: ../templates/options.lua
+    dest: /Users/{{ lookup('env', 'USER') }}/.config/lvim/lua/user/options.lua
+    mode: "0644"
+    force: yes
