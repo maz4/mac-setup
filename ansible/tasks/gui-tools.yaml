@@ -2,7 +2,7 @@
   community.general.homebrew_cask:
     name: "{{ item }}"
     state: latest
-  ignore_errors: yes
+  ignore_errors: true
   with_items:
     - anki
     - aldente
@@ -12,10 +12,8 @@
     - docker
     - deepl
     - google-chrome
-    - google-drive
     - http-toolkit
     - firefox
-    # iterm2 terminal
     - iterm2
     - insomnia
     - mongodb-compass
@@ -30,3 +28,4 @@
     - vlc
     - hammerspoon
     - zed
+    - cursor

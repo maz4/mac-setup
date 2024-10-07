@@ -6,6 +6,7 @@
   homebrew_cask:
     name:
       - font-inconsolata-for-powerline
+      # used in lvim
       - font-hack-nerd-font
       - font-fira-code
       - font-meslo-lg-nerd-font

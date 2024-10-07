@@ -19,3 +19,10 @@
     - fzf
     # Github Cli
     - gh
+    - lazygit
+    - tmux
+    - python
+    - rust
+    - ripgrep
+    - go
+

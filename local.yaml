@@ -39,8 +39,8 @@
     - name: Nvim / Lvim setup
       include_tasks: ansible/tasks/nvim.yaml
       
-    - name: Hammerspoon
-      include_tasks: ansible/tasks/Hammerspoon.yaml
+    - name: Hammerspoon setup
+      include_tasks: ansible/tasks/hammerspoon.yaml
       
     - name: OSX setup tasks
       include_tasks: ansible/tasks/osx.yaml
