@@ -23,20 +23,12 @@ fi
 
 
 # Copy oh-my-zsh themes
+# Copy the theme throught the cp command
+# theme has some characters that mess up with ansible copy function
 if command -v zsh &> /dev/null
 then
     echo "Copy oh-my-zsh theme"
-    cp ansible/templates/cobalt2.zsh-theme ~/.oh-my-zsh/themes
-fi
-
-# Copy Hamerspoon config
-if [ -d "$HOME/.hammerspoon" ];
-then
-    echo "Copy hammerspoon config to ~/.hammerspoon"
-
-    cp ansible/templates/hammerspoonConfig.lua ~/.hammerspoon/init.lua
-    
-    echo "Hammerspoon config copied successfully"
+    # cp ansible/templates/cobalt2.zsh-theme ~/.oh-my-zsh/themes
 fi
 
 # Style git log messages
@@ -47,10 +39,3 @@ then
     git config --global format.pretty my
 fi
 
-# Copy lunar vim config
-if command -v lvim &> /dev/null
-then
-  echo "Copy LunarVim config"
-  cp ansible/templates/nvimConfig.lua ~/.config/lvim/lua/user/options.lua
-fi
- 
