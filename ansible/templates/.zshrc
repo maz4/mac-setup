@@ -1,12 +1,10 @@
+
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/marcinzasadzki/.oh-my-zsh"
+export ZSH="/Users/$USER/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-# ZSH_THEME="cobalt2"
-ZSH_THEME="gnzh2"
+ZSH_THEME="cobalt2"
 
 # Which plugins would you like to load?
 # Add wisely, as too many plugins slow down shell startup.
@@ -49,7 +47,7 @@ function cp() {
     # Get the current branch name
     local branch_name
     branch_name="$(git rev-parse --abbrev-ref HEAD 2>/dev/null)"
-    
+
     # Check if the command to get branch name succeeded
     if [ -z "$branch_name" ] || [ "$branch_name" = "HEAD" ]; then
         echo "Error: No current branch detected. Are you in a detached HEAD state?"
@@ -105,7 +103,7 @@ function pl() {
   # Convert SSH URL to HTTPS URL for GitHub
   local https_repo_url=${repo_url/git@github.com:/https://github.com/}
   https_repo_url=${https_repo_url%.git}
-  
+
   local pr_link="${https_repo_url}/compare/${branch}?expand=1"
 
   echo "Pull Request Link for branch '${branch}':"
@@ -113,11 +111,11 @@ function pl() {
 }
 
 # Aliases
-# Edit zshrc file in a new vscode window
-alias ez='code --new-window --wait ~/.zshrc && source ~/.zshrc'
+# edit zshrc in a new vs code window
+alias ez="lvim -n ~/.zshrc && source ~/.zshrc"
 
-# shortern calling yarn
-alias y="yarn"
+# git checkout
+alias co="git checkout"
 
 # init jump
 eval "$(jump shell zsh)"
@@ -128,3 +126,25 @@ export NVM_DIR="$HOME/.nvm"
 
 export NVM_DIR=~/.nvm
 source $(brew --prefix nvm)/nvm.sh
+
+# NVim
+export PATH=/Users/$USER/.local/bin:$PATH
+
+# py3.11 path
+export PATH="$PATH:$HOME/Library/Python/3.11/bin"
+
+# Go executable path
+# export PATH=$PATH:/Users/$USER/go/bin
+# export GOPATH=/Users/$USER/go
+# export GOROOT=/opt/homebrew/bin/go  # Adjust based on your actual Go installation path
+
+# Go land path setup
+export GOROOT=/usr/local/go
+export PATH=$GOROOT/bin:$PATH
+
+# bun completions
+[ -s "/Users/$USER/.bun/_bun" ] && source "/Users/$USER/.bun/_bun"
+
+#Rust cargo path
+export PATH="$HOME/.cargo/bin:$PATH"
+
