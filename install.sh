@@ -15,7 +15,7 @@ fi
 ansible-galaxy collection install community.general
 ansible-playbook local.yaml -K --ask-vault-pass
 
-if command -v zsh &> /dev/null
+if ! command -v lvim &> /dev/null
 then
   echo "Install LunarVim"
   PIP_BREAK_SYSTEM_PACKAGES=1 LV_BRANCH='release-1.4/neovim-0.9' bash <(curl -s https://raw.githubusercontent.com/LunarVim/LunarVim/release-1.4/neovim-0.9/utils/installer/install.sh)
@@ -47,6 +47,7 @@ then
     git config --global format.pretty my
 fi
 
+# Copy lunar vim config
 if command -v lvim &> /dev/null
 then
   echo "Copy LunarVim config"
