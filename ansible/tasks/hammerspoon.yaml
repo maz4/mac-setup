@@ -1,0 +1,6 @@
+- name: Copy hammerspoon config
+  template:
+    src: ../templates/hammerspoonConfig.lua
+    dest: /Users/{{ lookup('env', 'USER') }}/.hammerspoon/init.lua
+    mode: "0644"
+    force: yes
