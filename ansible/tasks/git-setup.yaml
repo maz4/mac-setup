@@ -7,7 +7,7 @@
   git_config:
     name: user.email
     scope: global
-    value: "zasadzkimarcin@gmail.com"
+    value: "@gmail.com"
 
 - name: Git personal setup name
   git_config:
