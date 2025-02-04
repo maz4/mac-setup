@@ -14,3 +14,11 @@ vim.api.nvim_set_keymap(
 
 -- close buffer
 vim.api.nvim_set_keymap("n", "<leader>c", ":bd<CR>", { noremap = true, silent = true })
+
+-- close all of the open buffers exept the one that is focused on
+vim.api.nvim_set_keymap(
+	"n",
+	"<leader>bl",
+	[[:lua local currentBuf = vim.fn.bufnr('%') vim.cmd('bufdo bdelete | buffer ' .. currentBuf)<CR>]],
+	{ noremap = true, silent = true }
+)
