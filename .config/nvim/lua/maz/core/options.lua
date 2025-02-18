@@ -45,4 +45,4 @@ vim.opt.fillchars:append({ eob = " " })
 -- Lower values make key mappings (like <leader> shortcuts) feel more responsive,
 -- while higher values allow for more time to complete multi-key mappings.
 -- Default is 1000ms, reducing to 300ms for faster responsiveness.
-vim.opt.timeoutlen = 300
+vim.opt.timeoutlen = 500
