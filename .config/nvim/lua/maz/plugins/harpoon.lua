@@ -14,6 +14,11 @@ return {
 			harpoon:list():add()
 		end)
 
+		-- remove file to the list
+		vim.keymap.set("n", "<leader>hr", function()
+			harpoon:list():remove()
+		end)
+
 		vim.keymap.set("n", "<C-e>", function()
 			harpoon.ui:toggle_quick_menu(harpoon:list())
 		end)
