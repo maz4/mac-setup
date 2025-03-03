@@ -16,7 +16,7 @@ return {
 			pre_hook = ts_context_commentstring.create_pre_hook(),
 			opleader = {
 				---Line-comment keymap
-				line = "/",
+				line = "<leader>/",
 			},
 			mappings = {
 				---Operator-pending mapping; `gcc` `gbc` `gc[count]{motion}` `gb[count]{motion}`
