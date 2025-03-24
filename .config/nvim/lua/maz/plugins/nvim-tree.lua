@@ -27,6 +27,11 @@ return {
 					},
 				},
 			},
+			update_focused_file = {
+				enable = true, -- enables the feature
+				update_cwd = false, -- do not update the pwd to the folder of the current file
+				ignore_list = {}, -- a list of buffer types to ignore
+			},
 			-- disable window_picker for
 			-- explorer to work well with
 			-- window splits
