@@ -5,13 +5,18 @@ return {
 	version = false, -- set this if you want to always pull the latest change
 	opts = {
 		-- add any opts here
-		---@alias Provider "claude" | "openai" | "azure" | "gemini" | "cohere" | "copilot" | string
-		provider = "claude", -- Recommend using Claude
-		claude = {
-			endpoint = "https://api.anthropic.com",
-			model = "claude-3-5-sonnet-20240620",
-			temperature = 0,
-			max_tokens = 4096,
+		opts = {
+		-- add any opts here
+		---@alias Providers "claude" | "openai" | "azure" | "gemini" | "cohere" | "copilot" | string
+		providers = {
+			claude = {
+				endpoint = "https://api.anthropic.com",
+				model = "claude-sonnet-4-20250514",
+				extra_request_body = {
+					temperature = 0,
+					max_tokens = 4096,
+				},
+			},
 		},
 	},
 	-- if you want to build from source then do `make BUILD_FROM_SOURCE=true`

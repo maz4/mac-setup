@@ -1,9 +1,10 @@
 return {
 	"williamboman/mason.nvim",
 	dependencies = {
-		"williamboman/mason-lspconfig.nvim",
-		"WhoIsSethDaniel/mason-tool-installer.nvim",
+		{ "williamboman/mason-lspconfig.nvim", version = "^1.0.0" },
+		{ "WhoIsSethDaniel/mason-tool-installer.nvim", version = "^1.0.0" },
 	},
+	version = "^1.0.0",
 	config = function()
 		-- import mason
 		local mason = require("mason")
