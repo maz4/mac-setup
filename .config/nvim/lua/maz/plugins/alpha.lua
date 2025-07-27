@@ -1,3 +1,4 @@
+-- Start screen graphic when opening nvim
 return {
 	"goolord/alpha-nvim",
 	dependencies = {

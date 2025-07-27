@@ -1,3 +1,4 @@
+-- Pin most accessed files
 return {
 	"ThePrimeagen/harpoon",
 	branch = "harpoon2",

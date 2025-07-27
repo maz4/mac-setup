@@ -1,3 +1,4 @@
+-- Neovim automatic session management.
 return {
 	"rmagatti/auto-session",
 	lazy = false,

@@ -1,3 +1,4 @@
+-- Colour schemes config
 return {
 	"folke/tokyonight.nvim",
 	lazy = false,

@@ -46,3 +46,6 @@ vim.opt.fillchars:append({ eob = " " })
 -- while higher values allow for more time to complete multi-key mappings.
 -- Default is 1000ms, reducing to 300ms for faster responsiveness.
 vim.opt.timeoutlen = 500
+
+-- Show title of the open buffor on the top of the screen
+vim.opt.winbar = "%t"

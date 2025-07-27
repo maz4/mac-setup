@@ -1,3 +1,4 @@
+-- Neovim plugin designed to emulate the behaviour of the Cursor AI IDE.
 return {
 	"yetone/avante.nvim",
 	event = "VeryLazy",
