@@ -4,7 +4,12 @@ return {
 		{ "williamboman/mason-lspconfig.nvim" },
 		{ "WhoIsSethDaniel/mason-tool-installer.nvim" },
 	},
-	version = "^1.0.0",
+	--  dependencies = {
+	-- 	{ "williamboman/mason-lspconfig.nvim", version = "^1.0.0" },
+	-- 	{ "WhoIsSethDaniel/mason-tool-installer.nvim", version = "^.0.0" },
+	-- },
+
+	-- version = "^1.0.0",
 	config = function()
 		-- import mason
 		local mason = require("mason")
@@ -50,6 +55,7 @@ return {
 				"black", -- python formatter
 				"pylint",
 				"eslint_d",
+				"codelldb",
 			},
 		})
 	end,

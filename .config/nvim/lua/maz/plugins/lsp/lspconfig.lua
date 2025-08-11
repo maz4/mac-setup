@@ -90,27 +90,30 @@ return {
 
 		-- Change the Diagnostic symbols in the sign column (gutter)
 		-- (not in youtube nvim video)
-		local signs = {
-			[vim.diagnostic.severity.Error] = " ",
-			[vim.diagnostic.severity.Warn] = " ",
-			[vim.diagnostic.severity.Hint] = "󰠠 ",
-			[vim.diagnostic.severity.Info] = " ",
+		---@type vim.diagnostic.Opts
+		local diagnostics = {
+			underline = true,
+			update_in_insert = false,
+			virtual_text = {
+				spacing = 4,
+				source = "if_many",
+				prefix = "●",
+				-- this will set set the prefix to a function that returns the diagnostics icon based on the severity
+				-- this only works on a recent 0.10.0 build. Will be set to "●" when not supported
+				-- prefix = "icons",
+			},
+			severity_sort = true,
+			signs = {
+				text = {
+					[vim.diagnostic.severity.ERROR] = "  ",
+					[vim.diagnostic.severity.WARN] = "  ",
+					[vim.diagnostic.severity.HINT] = "󰠠  ",
+					[vim.diagnostic.severity.INFO] = "  ",
+				},
+			},
 		}
-		for type, icon in pairs(signs) do
-			local hl = "DiagnosticSign" .. type
-			vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
-			-- vim.diagnostics.config({
-			-- 	signs = { text = icon, numhl = hl, linehl = hl },
-			-- })
-		end
 
-		for type, icon in pairs(signs) do
-			vim.diagnostics.config({
-				signs = { text = {
-					[type] = icon,
-				} },
-			})
-		end
+		vim.diagnostic.config(diagnostics)
 
 		if not configs.golangcilsp then
 			configs.golangcilsp = {
@@ -144,7 +147,6 @@ return {
 			golangci_lint_ls = {},
 			gopls = {},
 			biome = {},
-
 			graphql = {
 				-- configure graphql language server
 				capabilities = capabilities,
