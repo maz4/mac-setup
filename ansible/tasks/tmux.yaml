@@ -1,0 +1,6 @@
+- name: Copy hammerspoon config
+  template:
+    src: ../templates/.tmux.conf
+    dest: /Users/{{ lookup('env', 'USER') }}/.tmux.conf
+    mode: "0644"
+    force: yes
