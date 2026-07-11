@@ -3,7 +3,10 @@ return {
 	branch = "0.1.x",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
-		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+		{
+			"nvim-telescope/telescope-fzf-native.nvim",
+			build = "make",
+		},
 		"nvim-tree/nvim-web-devicons",
 		"folke/trouble.nvim",
 	},
@@ -11,7 +14,6 @@ return {
 		local telescope = require("telescope")
 		local actions = require("telescope.actions")
 		local transform_mod = require("telescope.actions.mt").transform_mod
-
 		local trouble = require("trouble")
 		local trouble_telescope = require("trouble.sources.telescope")
 

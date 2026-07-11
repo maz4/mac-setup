@@ -1,12 +1,11 @@
 -- Neovim plugin designed to emulate the behaviour of the Cursor AI IDE.
 return {
 	"yetone/avante.nvim",
+	enabled = false,
 	event = "VeryLazy",
 	lazy = false,
 	version = false, -- set this if you want to always pull the latest change
 	opts = {
-		-- add any opts here
-		opts = {
 		-- add any opts here
 		---@alias Providers "claude" | "openai" | "azure" | "gemini" | "cohere" | "copilot" | string
 		providers = {

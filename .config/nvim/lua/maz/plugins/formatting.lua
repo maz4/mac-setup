@@ -1,4 +1,4 @@
--- formatter plugin for Neovim
+-- code formatter plugin for Neovim
 return {
 	"stevearc/conform.nvim",
 	event = { "BufReadPre", "BufNewFile" },
