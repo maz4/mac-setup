@@ -25,4 +25,4 @@
     - rust
     - ripgrep
     - go
-
+    - tree-sitter-cli
