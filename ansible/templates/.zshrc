@@ -1,4 +1,3 @@
-
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/$USER/.oh-my-zsh"
 
@@ -112,7 +111,10 @@ function pl() {
 
 # Aliases
 # edit zshrc in a new vs code window
-alias ez="lvim -n ~/.zshrc && source ~/.zshrc"
+alias ez="nvim -n ~/.zshrc && source ~/.zshrc"
+
+# shortcut to run Kotlin gradlew run command
+alias gr="./gradlew run"
 
 # git checkout
 alias co="git checkout"
@@ -138,9 +140,13 @@ export PATH="$PATH:$HOME/Library/Python/3.11/bin"
 # export GOPATH=/Users/$USER/go
 # export GOROOT=/opt/homebrew/bin/go  # Adjust based on your actual Go installation path
 
+
 # Go land path setup
-export GOROOT=/usr/local/go
+# There is difference between GOROOT and GOPATH
+export GOROOT="$(brew --prefix go)/libexec"
 export PATH=$GOROOT/bin:$PATH
+
+export PATH=$PATH:/Users/$USER/go/bin
 
 # bun completions
 [ -s "/Users/$USER/.bun/_bun" ] && source "/Users/$USER/.bun/_bun"
@@ -148,3 +154,10 @@ export PATH=$GOROOT/bin:$PATH
 #Rust cargo path
 export PATH="$HOME/.cargo/bin:$PATH"
 
+# Go delve path for go debugger
+export PATH="/opt/homebrew/bin:$PATH"
+
+# Kotlin java sdk-man setup
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"

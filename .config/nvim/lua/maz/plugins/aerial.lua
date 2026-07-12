@@ -1,3 +1,4 @@
+-- Plugin to show code outline window (list of functions) for skimming and quick navigation
 return {
 	"stevearc/aerial.nvim",
 	-- Optional dependencies

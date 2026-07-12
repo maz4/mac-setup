@@ -144,6 +144,8 @@ return {
 			gopls = {},
 			biome = {},
 
+			kotlin_lsp = {},
+
 			graphql = {
 				filetypes = {
 					"graphql",

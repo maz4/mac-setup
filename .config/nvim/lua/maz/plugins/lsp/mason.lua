@@ -1,10 +1,10 @@
 return {
 	"williamboman/mason.nvim",
 	dependencies = {
-		{ "williamboman/mason-lspconfig.nvim", version = "^1.0.0" },
-		{ "WhoIsSethDaniel/mason-tool-installer.nvim", version = "^1.0.0" },
+		{ "williamboman/mason-lspconfig.nvim" },
+		{ "WhoIsSethDaniel/mason-tool-installer.nvim" },
 	},
-	version = "^1.0.0",
+
 	config = function()
 		-- import mason
 		local mason = require("mason")
@@ -39,6 +39,9 @@ return {
 				"golangci_lint_ls",
 				"gopls",
 				"biome",
+				"astro",
+				"rust_analyzer",
+				"kotlin_lsp",
 			},
 		})
 
@@ -50,6 +53,8 @@ return {
 				"black", -- python formatter
 				"pylint",
 				"eslint_d",
+				"codelldb",
+				"ktlint",
 			},
 		})
 	end,
