@@ -1,14 +1,31 @@
-- name: Create a default VSCode configuration
-  template:
-    src: ../templates/vscode-settings.json
-    dest: /Users/{{ lookup('env', 'USER') }}/Library/Application Support/Code/User/settings.json
-    mode: "0644"
-    force: yes
+- name: Install Visual Studio Code
+  community.general.homebrew_cask:
+    name: visual-studio-code
+    state: present
 
-# Add something which ensures path is set here
+- name: Ensure the `code` CLI is available
+  ansible.builtin.file:
+    src: /Applications/Visual Studio Code.app/Contents/Resources/app/bin/code
+    dest: /usr/local/bin/code
+    state: link
+  become: true
+
+- name: Ensure VSCode User config directory exists
+  ansible.builtin.file:
+    path: "{{ ansible_env.HOME }}/Library/Application Support/Code/User"
+    state: directory
+    mode: "0755"
+
+- name: Copy VSCode settings
+  ansible.builtin.copy:
+    src: ../templates/vscode-settings.json
+    dest: "{{ ansible_env.HOME }}/Library/Application Support/Code/User/settings.json"
+    mode: "0644"
+
 - name: Install VSCode extensions
-  shell: code --install-extension {{ item }}
-  with_items:
+  ansible.builtin.command:
+    cmd: code --install-extension {{ item }}
+  loop:
     - aaravb.chrome-extension-developer-tools
     - adamhartford.vscode-base64
     - dbaeumer.vscode-eslint
@@ -28,3 +45,5 @@
     - WallabyJs.quokka-vscode
     - Zignd.html-css-class-completion
     - vscode-icons-team.vscode-icons
+  register: vscode_extensions
+  changed_when: "'already installed' not in vscode_extensions.stdout"
