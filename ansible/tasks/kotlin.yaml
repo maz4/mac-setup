@@ -1,6 +1,6 @@
 - name: Check if SDKMAN! is installed
   ansible.builtin.stat:
-    path: "{{ ansible_env.HOME }}/.sdkman"
+    path: "{{ lookup('ansible.builtin.env', 'HOME') }}/.sdkman"
   register: sdkman
 
 - name: Install SDKMAN!
@@ -12,7 +12,7 @@
 
 - name: Install Java
   ansible.builtin.shell: |
-    source "{{ ansible_env.HOME }}/.sdkman/bin/sdkman-init.sh"
+    source "{{ lookup('ansible.builtin.env', 'HOME') }}/.sdkman/bin/sdkman-init.sh"
     sdk install java
   args:
     executable: /bin/zsh
@@ -21,7 +21,7 @@
 
 - name: Install Kotlin
   ansible.builtin.shell: |
-    source "{{ ansible_env.HOME }}/.sdkman/bin/sdkman-init.sh"
+    source "{{ lookup('ansible.builtin.env', 'HOME') }}/.sdkman/bin/sdkman-init.sh"
     sdk install kotlin
   args:
     executable: /bin/zsh
@@ -30,7 +30,7 @@
 
 - name: Install Gradle
   ansible.builtin.shell: |
-    source "{{ ansible_env.HOME }}/.sdkman/bin/sdkman-init.sh"
+    source "{{ lookup('ansible.builtin.env', 'HOME') }}/.sdkman/bin/sdkman-init.sh"
     sdk install gradle
   args:
     executable: /bin/zsh

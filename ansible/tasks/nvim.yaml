@@ -5,12 +5,12 @@
 
 - name: Ensure ~/.config exists
   ansible.builtin.file:
-    path: "{{ ansible_env.HOME }}/.config"
+    path: "{{ lookup('ansible.builtin.env', 'HOME') }}/.config"
     state: directory
     mode: "0755"
 
 - name: Copy NeoVim configuration
   ansible.builtin.copy:
     src: ../../.config/nvim/
-    dest: "{{ ansible_env.HOME }}/.config/nvim/"
+    dest: "{{ lookup('ansible.builtin.env', 'HOME') }}/.config/nvim/"
     mode: preserve
