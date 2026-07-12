@@ -30,7 +30,7 @@
   community.general.git_config:
     name: core.excludesfile
     scope: global
-    value: "{{ ansible_env.HOME }}/.global_gitignore"
+    value: "{{ lookup('ansible.builtin.env', 'HOME') }}/.global_gitignore"
 
 - name: Set default branch name
   community.general.git_config:
