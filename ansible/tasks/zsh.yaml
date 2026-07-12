@@ -1,23 +1,34 @@
 - name: Install zsh
   community.general.homebrew:
-    name: ["zsh"]
+    name: zsh
+    state: latest
 
-- name: Change shell to zsh
-  shell: chsh -s $(which zsh)
-  changed_when: true
+- name: Change login shell to zsh
+  ansible.builtin.user:
+    name: "{{ ansible_facts['user_id'] }}"
+    shell: "{{ lookup('pipe', 'which zsh') }}"
   become: true
 
-- name: Check to see if oh-my-zsh is already installed
-  stat:
-    path: ~/.oh-my-zsh
+- name: Check if Oh My Zsh is installed
+  ansible.builtin.stat:
+    path: "{{ lookup('ansible.builtin.env', 'HOME') }}/.oh-my-zsh"
   register: oh_my_zsh
 
-- name: Install oh-my-zsh
-  shell: sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+- name: Install Oh My Zsh
+  ansible.builtin.shell: >
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+  args:
+    creates: "{{ lookup('ansible.builtin.env', 'HOME') }}/.oh-my-zsh"
   when: not oh_my_zsh.stat.exists
 
-- name: Copy ZSH .zshrc file
-  template:
+- name: Copy custom Oh My Zsh theme
+  ansible.builtin.copy:
+    src: ../templates/cobalt2.zsh-theme
+    dest: "{{ lookup('ansible.builtin.env', 'HOME') }}/.oh-my-zsh/themes/cobalt2.zsh-theme"
+    mode: "0644"
+
+- name: Copy .zshrc
+  ansible.builtin.copy:
     src: ../templates/.zshrc
-    dest: ~/
+    dest: "{{ lookup('ansible.builtin.env', 'HOME') }}/.zshrc"
     mode: "0644"

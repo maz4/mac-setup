@@ -1,6 +1,10 @@
-- name: Copy hammerspoon config
-  template:
+- name: Install tmux
+  community.general.homebrew:
+    name: tmux
+    state: latest
+
+- name: Render tmux config
+  ansible.builtin.template:
     src: ../templates/.tmux.conf
-    dest: /Users/{{ lookup('env', 'USER') }}/.tmux.conf
+    dest: "{{ ansible_env.HOME }}/.tmux.conf"
     mode: "0644"
-    force: yes

@@ -1,16 +1,21 @@
+- name: Prompt for Git email
+  ansible.builtin.pause:
+    prompt: "Enter your Git email"
+  register: git_email
+
 - name: Install latest Git
   community.general.homebrew:
     name: git
     state: latest
 
-- name: Git personal setup email
-  git_config:
+- name: Configure Git email
+  community.general.git_config:
     name: user.email
     scope: global
-    value: "@gmail.com"
+    value: "{{ git_email.user_input }}"
 
-- name: Git personal setup name
-  git_config:
+- name: Configure Git name
+  community.general.git_config:
     name: user.name
     scope: global
     value: "Marcin Zasadzki"
@@ -25,9 +30,9 @@
   community.general.git_config:
     name: core.excludesfile
     scope: global
-    value: ~/.global_gitignore
+    value: "{{ lookup('ansible.builtin.env', 'HOME') }}/.global_gitignore"
 
-- name: Set global git default branch name
+- name: Set default branch name
   community.general.git_config:
     name: init.defaultBranch
     scope: global

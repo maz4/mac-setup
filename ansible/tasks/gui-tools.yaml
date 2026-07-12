@@ -6,9 +6,7 @@
   with_items:
     - anki
     - aldente
-    - alfred
     - brave-browser
-    - cheatsheet
     - docker
     - google-chrome
     - http-toolkit
@@ -16,7 +14,6 @@
     - iterm2
     - ghostty
     - insomnia
-    - mongodb-compass
     - ngrok
     - postman
     - stats

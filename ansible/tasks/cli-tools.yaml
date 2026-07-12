@@ -9,9 +9,7 @@
     - htop
     - ansible-lint
     - ranger
-    - spotify-tui
     - lazydocker
-    - skaffold
     - mas
     # history jump
     - jump
@@ -20,7 +18,6 @@
     # Github Cli
     - gh
     - lazygit
-    - tmux
     - python
     - rust
     - ripgrep

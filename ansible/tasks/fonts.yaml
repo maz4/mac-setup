@@ -1,13 +1,8 @@
-- name: Tapping homebrew/cask-fonts
-  homebrew_tap:
-    name: homebrew/cask-fonts
-
-- name: Installing fonts
-  homebrew_cask:
+- name: Install fonts
+  community.general.homebrew_cask:
     name:
-      - font-inconsolata-for-powerline
-      # used in lvim
-      - font-hack-nerd-font
       - font-fira-code
+      - font-hack-nerd-font
       - font-meslo-lg-nerd-font
-      - font-meslo-for-powerline
+      - font-inconsolata
+    state: present

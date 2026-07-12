@@ -1,6 +1,16 @@
-- name: Create a default Neo Vim / Lunar Vim configuration
-  template:
-    src: ../templates/nvimConfig.lua
-    dest: /Users/{{ lookup('env', 'USER') }}/.config/lvim/lua/user/options.lua
-    mode: "0644"
-    force: yes
+- name: Install NeoVim
+  community.general.homebrew:
+    name: neovim
+    state: latest
+
+- name: Ensure ~/.config exists
+  ansible.builtin.file:
+    path: "{{ lookup('ansible.builtin.env', 'HOME') }}/.config"
+    state: directory
+    mode: "0755"
+
+- name: Copy NeoVim configuration
+  ansible.builtin.copy:
+    src: ../../.config/nvim/
+    dest: "{{ lookup('ansible.builtin.env', 'HOME') }}/.config/nvim/"
+    mode: preserve
