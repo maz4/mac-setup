@@ -1,0 +1,38 @@
+- name: Check if SDKMAN! is installed
+  ansible.builtin.stat:
+    path: "{{ ansible_env.HOME }}/.sdkman"
+  register: sdkman
+
+- name: Install SDKMAN!
+  ansible.builtin.shell: |
+    curl -s "https://get.sdkman.io" | zsh
+  args:
+    executable: /bin/zsh
+  when: not sdkman.stat.exists
+
+- name: Install Java
+  ansible.builtin.shell: |
+    source "{{ ansible_env.HOME }}/.sdkman/bin/sdkman-init.sh"
+    sdk install java
+  args:
+    executable: /bin/zsh
+  register: java_install
+  changed_when: "'is already installed' not in java_install.stdout"
+
+- name: Install Kotlin
+  ansible.builtin.shell: |
+    source "{{ ansible_env.HOME }}/.sdkman/bin/sdkman-init.sh"
+    sdk install kotlin
+  args:
+    executable: /bin/zsh
+  register: kotlin_install
+  changed_when: "'is already installed' not in kotlin_install.stdout"
+
+- name: Install Gradle
+  ansible.builtin.shell: |
+    source "{{ ansible_env.HOME }}/.sdkman/bin/sdkman-init.sh"
+    sdk install gradle
+  args:
+    executable: /bin/zsh
+  register: gradle_install
+  changed_when: "'is already installed' not in gradle_install.stdout"
