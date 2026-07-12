@@ -36,11 +36,14 @@
     - name: Zed setup tasks
       include_tasks: ansible/tasks/zed.yaml
 
-    - name: Nvim / Lvim setup
+    - name: Nvim setup
       include_tasks: ansible/tasks/nvim.yaml
-      
+
     - name: Hammerspoon setup
       include_tasks: ansible/tasks/hammerspoon.yaml
-      
+
+    - name: Kotlin setup
+      include_tasks: ansible/tasks/kotlin.yaml
+
     - name: OSX setup tasks
       include_tasks: ansible/tasks/osx.yaml
