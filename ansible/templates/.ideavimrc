@@ -1,0 +1,8 @@
+" turn off the bell when pressing Esc in normal mode
+set visualbell
+
+" copy paste from the global rigister
+set clipboard+=unnamed
+
+" Set 'whichwrap' option to allow 'h' and 'l' to move to previous/next line
+set whichwrap+=<,>,h,l

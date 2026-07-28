@@ -42,6 +42,9 @@
     - name: Hammerspoon setup
       include_tasks: ansible/tasks/hammerspoon.yaml
 
+    - name: IntelliJ Idea setup
+      include_tasks: ansible/tasks/intellij-idea.yaml
+
     - name: Kotlin setup
       include_tasks: ansible/tasks/kotlin.yaml
 
