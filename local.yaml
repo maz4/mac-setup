@@ -30,8 +30,8 @@
     - name: Node setup tasks
       include_tasks: ansible/tasks/node.yaml
 
-    - name: VSCode setup tasks
-      include_tasks: ansible/tasks/vscode.yaml
+    # - name: VSCode setup tasks
+    # include_tasks: ansible/tasks/vscode.yaml
 
     - name: Zed setup tasks
       include_tasks: ansible/tasks/zed.yaml

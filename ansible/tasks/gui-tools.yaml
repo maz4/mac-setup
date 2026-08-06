@@ -4,22 +4,14 @@
     state: latest
   ignore_errors: true
   with_items:
-    - anki
-    - aldente
-    - brave-browser
     - docker
     - google-chrome
-    - http-toolkit
-    - firefox
     - iterm2
     - ghostty
     - insomnia
-    - ngrok
     - postman
     - stats
-    - spotify
-    - surfshark
     - sourcetree
-    - vlc
     - hammerspoon
     - zed
+    - cursor

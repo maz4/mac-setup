@@ -3,7 +3,7 @@
     name: "{{ item }}"
     state: latest
   with_items:
-    - yarn
+    # - yarn
     - tree
     - curl
     - htop
@@ -19,7 +19,7 @@
     - gh
     - lazygit
     - python
-    - rust
+    # - rust
     - ripgrep
     - go
     - tree-sitter-cli
