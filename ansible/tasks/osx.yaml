@@ -122,6 +122,147 @@
     value: 1
   become: yes
 
+# ------------------------------------------------------------
+# macOS window management shortcuts
+# ------------------------------------------------------------
+- name: Configure macOS window management shortcuts
+  shell: "{{ item }}"
+  with_items:
+    # Control + Option + Arrow keys
+    - defaults write -g NSUserKeyEquivalents -dict-add '\033Window\033Move & Resize\033Left' '^~\U2190'
+    - defaults write -g NSUserKeyEquivalents -dict-add '\033Window\033Move & Resize\033Right' '^~\U2192'
+    - defaults write -g NSUserKeyEquivalents -dict-add '\033Window\033Move & Resize\033Top' '^~\U2191'
+    - defaults write -g NSUserKeyEquivalents -dict-add '\033Window\033Move & Resize\033Bottom' '^~\U2193'
+
+    # Control + Option + Enter
+    - defaults write -g NSUserKeyEquivalents -dict-add '\033Window\033Move & Resize\033Fill' '^~\U000D'
+
+    # Control + Option + U/I/J/K
+    - defaults write -g NSUserKeyEquivalents -dict-add '\033Window\033Move & Resize\033Top Left' '^~u'
+    - defaults write -g NSUserKeyEquivalents -dict-add '\033Window\033Move & Resize\033Top Right' '^~i'
+    - defaults write -g NSUserKeyEquivalents -dict-add '\033Window\033Move & Resize\033Bottom Left' '^~j'
+    - defaults write -g NSUserKeyEquivalents -dict-add '\033Window\033Move & Resize\033Bottom Right' '^~k'
+
+    # Control + Option + Space
+    - defaults write -g NSUserKeyEquivalents -dict-add '\033Window\033Move & Resize\033Center' '^~ '
+
+    # Command + Control + Space → next input source
+    - >
+      defaults write -g AppleSymbolicHotKeys -dict-add 60
+      '<dict>
+        <key>enabled</key>
+        <true/>
+        <key>value</key>
+        <dict>
+          <key>parameters</key>
+          <array>
+            <integer>32</integer>
+            <integer>49</integer>
+            <integer>131072</integer>
+          </array>
+          <key>type</key>
+          <string>standard</string>
+        </dict>
+      </dict>'
+
+# macOS Shortcuts - application launcher shortcuts
+# ⌘1 → Google Chrome
+# ⌘2 → Terminal
+# ⌘3 → Visual Studio Code
+# ⌘4 → Slack
+- name: Configure application launcher shortcuts
+  shell: |
+    set -e
+
+    osascript <<'APPLESCRIPT'
+    use scripting additions
+
+    set shortcutData to {¬
+        {"Chrome", "Google Chrome", "1"}, ¬
+        {"VS Code", "Visual Studio Code", "2"}, ¬
+        {"Terminal", "Terminal", "3"}, ¬
+        {"Slack", "Slack", "esc"}}
+
+    tell application "Shortcuts"
+        activate
+    end tell
+
+    delay 1
+
+    tell application "System Events"
+        tell process "Shortcuts"
+
+            repeat with itemData in shortcutData
+
+                set shortcutName to item 1 of itemData
+                set appName to item 2 of itemData
+                set keyNumber to item 3 of itemData
+
+                -- Create a new shortcut with Command-N
+                keystroke "n" using {command down}
+                delay 0.5
+
+                -- Set the shortcut name
+                keystroke shortcutName
+                keystroke return
+                delay 0.5
+
+                -- Search for "Open App"
+                keystroke "f" using {command down}
+                delay 0.3
+                keystroke "Open App"
+                delay 0.8
+
+                -- Add the Open App action
+                keystroke return
+                delay 0.8
+
+                -- Select the application
+                keystroke appName
+                delay 0.5
+                keystroke return
+                delay 0.8
+
+                -- Open shortcut details
+                keystroke "i" using {command down}
+                delay 0.8
+
+                -- Click "Add Keyboard Shortcut"
+                try
+                    click (first button whose description contains "Add Keyboard Shortcut")
+                on error
+                    try
+                        click (first static text whose value is "Add Keyboard Shortcut")
+                    end try
+                end try
+
+                delay 0.5
+
+                -- Assign Command + number
+                key code (18 + (keyNumber as integer)) using {command down}
+
+                delay 0.5
+
+                -- Close the editor
+                keystroke "w" using {command down}
+                delay 0.5
+
+            end repeat
+
+        end tell
+    end tell
+
+    display notification "Application shortcuts configured" with title "macOS Shortcuts"
+    APPLESCRIPT
+
+  changed_when: true
+
+- name: Restart macOS preference services
+  shell: |
+    killall cfprefsd 2>/dev/null || true
+    killall SystemUIServer 2>/dev/null || true
+  changed_when: true
+
 - name: Restart finder
   changed_when: true
   command: killall Finder
